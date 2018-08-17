@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+  <meta charset="utf-8">
+  <title>TES</title>
+
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+
+</head>
+<body>
+  <nav class="navbar navbar-expand-lg navbar-dark" style="background-color: #000080">
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo01" aria-controls="navbarTogglerDemo01" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarTogglerDemo01">
+      <a class="navbar-brand" href="#">TiCo</a>
+      <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
+        <li class="nav-item active">
+          <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#">Link</a>
+        </li>
+      </ul>
+      <form class="form-inline my-2 my-lg-0">
+        <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Logout</button>
+      </form>
+    </div>
+  </nav>
+
+  <div class="container">
+    <br><h2>Manage Main Plan</h2>
+    <h3>Add plan</h3>
+    <form>
+      <div class="form-group">
+        <label for="plan">Plan</label>
+        <input type="text" class="form-control" id="plan" placeholder="Enter your plan" required>
+      </div>
+
+      <div class="form-group">
+        <label for="ptype">Plan Type</label>
+        <select class="form-control" id="ptype" required>
+          <option>Choose plan type...</option>
+          <option value"Years Plan">Years Plan</option>
+          <option value"Monthly Plan">Monthly Plan</option>
+          <option value"Weekly Plan">Weekly Plan</option>
+        </select>
+      </div>
+
+      <div class="form-group">
+        <label for="startdate">Date</label>
+        <input type="date" class="form-control" id="startdate" required>
+        <label for="enddate">to</label>
+        <input type="date" class="form-control" id="enddate" required>
+      </div>
+
+      <div class="form-group">
+        <label for="pnotes">Notes</label>
+        <textarea class="form-control" id="pnotes" rows="3" placeholder="Enter your notes" required></textarea>
+      </div>
+
+      <div class="form-group">
+        <label for="purpose">Purpose</label>
+        <select class="form-control" id="purpose" required>
+          <option>Choose purpose...</option>
+          <option value"Self Improvment">Self Improvment</option>
+          <option value"Family">Family</option>
+          <option value"Social">Social</option>
+        </select>
+      </div>
+
+      <button type="submit" class="btn btn-primary">Save</button>
+    </form>
+
+    <br><h3>List of plan</h3>
+    <table class="table table-hover table-striped table-light">
+      <thead>
+        <tr>
+          <th scope="col">Id</th>
+          <th scope="col">Plan</th>
+          <th scope="col">Type</th>
+          <th scope="col">Start Date</th>
+          <th scope="col">End Date</th>
+          <th scope="col">Purpose</th>
+          <th scope="col">Notes</th>
+          <th scope="col">Status</th>
+          <th scope="col">Actions</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <th scope="row">1</th>
+          <td>Mark</td>
+          <td>Otto</td>
+          <td>@mdo</td>
+          <td>Mark</td>
+          <td>Otto</td>
+          <td>@mdo</td>
+          <td>Mark</td>
+          <td>
+            <a href="#" class="btn btn-info">Edit</a>
+            <a href="#" class="btn btn-danger">Delete</a>
+          </td>
+        </tr>
+        <tr>
+          <th scope="row">2</th>
+          <td>Mark</td>
+          <td>Otto</td>
+          <td>@mdo</td>
+          <td>Mark</td>
+          <td>Otto</td>
+          <td>@mdo</td>
+          <td>Mark</td>
+          <td>
+            <a href="#" class="btn btn-info">Edit</a>
+            <a href="#" class="btn btn-danger">Delete</a>
+          </td>
+        </tr>
+        <tr>
+          <th scope="row">3</th>
+          <td>Mark</td>
+          <td>Otto</td>
+          <td>@mdo</td>
+          <td>Mark</td>
+          <td>Otto</td>
+          <td>@mdo</td>
+          <td>Mark</td>
+          <td>
+            <a href="#" class="btn btn-info">Edit</a>
+            <a href="#" class="btn btn-danger">Delete</a>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div><br><br>
+
+
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
+  <script>
+  $(document).ready(function(){
+    $('.dropdown-submenu a.plan').on("click", function(e){
+      $(this).next('ul').toggle();
+      e.stopPropagation();
+      e.preventDefault();
+    });
+  });
+</script>
+</body>
+</html>
