@@ -12,18 +12,28 @@
       <span class="navbar-toggler-icon"></span>
     </button>
     <div class="collapse navbar-collapse" id="navbarTogglerDemo01">
-      <a class="navbar-brand" href="#">TiCo</a>
+      <a class="navbar-brand" href="#" style="border-radius: 7px; border: 0.5px solid #999;padding:6px;">TiCo</a>
       <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
+        <li class="nav-item">
+          <a class="nav-link" href="#">Home</a>
+        </li>
         <li class="nav-item active">
-          <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
+          <a class="nav-link" href="#">Plan</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="#">Link</a>
+          <a class="nav-link" href="#">Report</a>
         </li>
       </ul>
-      <form class="form-inline my-2 my-lg-0">
-        <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Logout</button>
-      </form>
+
+      <div class="form-inline my-2 my-lg-0 nav-item dropdown">
+        <a class="nav-link dropdown-toggle btn btn-outline-success" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          Saeful
+        </a>
+        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+          <a class="dropdown-item" href="#">Account</a>
+          <a class="dropdown-item" href="#">Logout</a>
+        </div>
+      </div>
     </div>
   </nav>
 
