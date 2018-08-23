@@ -22,5 +22,18 @@
   "devDependencies": {
     "express-session": "^1.15.6",
     "nodemon": "^1.18.3"
-  }
+  },
+  "description": "",
+  "main": "app.js",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/YudhistiraM/TiCo.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/YudhistiraM/TiCo/issues"
+  },
+  "homepage": "https://github.com/YudhistiraM/TiCo#readme"
 }
