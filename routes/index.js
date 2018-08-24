@@ -1,5 +1,6 @@
-var express = require('express');
-var router = express.Router();
+const express = require('express');
+const router = express.Router();
+const models = require('../models/index');
 
 /* GET home page. */
 router.get('/', function(req, res, next) {
@@ -15,11 +16,45 @@ router.get('/signup', function(req, res, next) {
 });
 
 router.get('/home', function(req, res, next) {
-  res.render('home');
+  res.render('home')
 });
 
 router.get('/mainPlan', function(req, res, next) {
-  res.render('mainPlan');
+  models.Plan.findAll({raw: true}).then(function(plans){
+    res.render('mainPlan', {
+      plans: plans
+    });
+  });
+});
+
+router.post('/addMainPlan', function(req, res, next) {
+  models.Plan.create({
+    title: req.body.title,
+    type: req.body.type,
+    purpose: req.body.purpose,
+    startdate: req.body.startdate,
+    enddate: req.body.enddate,
+    notes: req.body.notes,
+    status: "on process",
+    userid: 1
+  }).then(function(user){
+    res.redirect('/mainPlan')
+  });
+});
+
+router.post('/deleteMainPlan', function(req, res, next) {
+  models.Plan.create({
+    title: req.body.title,
+    type: req.body.type,
+    purpose: req.body.purpose,
+    startdate: req.body.startdate,
+    enddate: req.body.enddate,
+    notes: req.body.notes,
+    status: "on process",
+    userid: 1
+  }).then(function(user){
+    res.redirect('/mainPlan')
+  });
 });
 
 router.get('/addSubPlan', function(req, res, next) {

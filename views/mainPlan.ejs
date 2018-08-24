@@ -47,17 +47,17 @@
       <div class="col-sm-10">
         <br><br><br><br>
         <h4>Add main plan</h4>
-        <form>
+        <form action="../addMainPlan" method="post">
           <div class="form-group">
-            <label for="plan">Plan</label>
-            <input type="text" class="form-control" id="plan" placeholder="Enter your plan" required>
+            <label for="title">Plan</label>
+            <input type="text" name="title" class="form-control" id="title" placeholder="Enter your plan" required>
           </div>
 
           <div class="row">
             <div class="col-sm-6">
               <div class="form-group">
-                <label for="ptype">Plan Type</label>
-                <select class="form-control" id="ptype" required>
+                <label for="type">Plan Type</label>
+                <select name="type" class="form-control" id="type" required>
                   <option>Choose plan type...</option>
                   <option value"Years Plan">Years Plan</option>
                   <option value"Monthly Plan">Monthly Plan</option>
@@ -67,7 +67,7 @@
 
               <div class="form-group">
                 <label for="purpose">Purpose</label>
-                <select class="form-control" id="purpose" required>
+                <select name="purpose" class="form-control" id="purpose" required>
                   <option>Choose purpose...</option>
                   <option value"Self Improvment">Self Improvment</option>
                   <option value"Family">Family</option>
@@ -78,20 +78,20 @@
               <label for="startdate">Date</label>
               <div class="form-row align-items-center" >
                 <div class="col-auto">
-                  <input type="date" class="form-control" id="startdate" required>
+                  <input name="startdate" type="date" class="form-control" id="startdate" required>
                 </div>
                 <div class="col-auto">
                   <label for="enddate">to</label>
                 </div>
                 <div class="col-auto">
-                  <input type="date" class="form-control" id="enddate" required>
+                  <input name="enddate" type="date" class="form-control" id="enddate" required>
                 </div>
               </div>
             </div>
             <div class="col-sm-6">
               <div class="form-group">
-                <label for="pnotes">Notes</label>
-                <textarea class="form-control" id="pnotes" rows="8" placeholder="Enter your notes" required></textarea>
+                <label for="notes">Notes</label>
+                <textarea name="notes" class="form-control" id="notes" rows="8" placeholder="Enter your notes" required></textarea>
               </div>
             </div>
           </div>
@@ -114,16 +114,16 @@
             </tr>
           </thead>
           <tbody>
-            <% for(let i = 1; i <= 5; i++){ %>
+            <% for(let i = 0; i < plans.length; i++){ %>
               <tr>
-                <th scope="row"><%= i %></th>
-                <td>Mark</td>
-                <td>Otto</td>
-                <td>@mdo</td>
-                <td>Mark</td>
-                <td>Otto</td>
-                <td>@mdo</td>
-                <td>Mark</td>
+                <th scope="row">1</th>
+                <td><%= plans[i].title %></td>
+                <td><%= plans[i].type %></td>
+                <td><%= plans[i].startdate %></td>
+                <td><%= plans[i].enddate %></td>
+                <td><%= plans[i].purpose %></td>
+                <td><%= plans[i].notes %></td>
+                <td><%= plans[i].status %></td>
                 <td>
                   <a href="../viewMainPlan" class="btn btn-primary">View</a>
                   <a href="#" class="btn btn-info">Edit</a>
