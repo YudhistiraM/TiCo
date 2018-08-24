@@ -23,7 +23,8 @@ router.get('/home', function(req, res, next) {
 router.get('/mainPlan', function(req, res, next) {
   models.Plan.findAll({raw: true}).then(function(plans){
     res.render('mainPlan', {
-      plans: plans
+      plans: plans,
+      util: util
     });
   });
 });
