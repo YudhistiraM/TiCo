@@ -32,7 +32,7 @@ module.exports = {
       parentplan: {
         type: Sequelize.INTEGER
       },
-      userid: {
+      UserId: {
         type: Sequelize.INTEGER
       },
       createdAt: {

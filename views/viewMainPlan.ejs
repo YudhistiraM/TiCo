@@ -7,6 +7,7 @@
   <link rel='stylesheet' href='/stylesheets/sidebar.css' />
 </head>
 <body>
+
   <nav class="navbar navbar-expand-lg fixed-top navbar-dark" style="background-color: #000080">
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo01" aria-controls="navbarTogglerDemo01" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
@@ -54,16 +55,16 @@
             <hr>
             <div class="card card-dark">
               <div class="card-body">
-                <p><b> <a href="#"><small>done</small></a> Khusnul khotimah</b></p>
+                <p><b> <a href="check?/<%= plans.id %>"><small>done</small></a> <%= plans.title %></b></p>
                 <ul style="font-size: 14px">
-                  <li>Type : Years</li>
-                  <li>Purpose : Self Improvment</li>
-                  <li>Startdate : Now</li>
-                  <li>Enddate : Wallahu a'lam</li>
-                  <li>Status : Process</li>
-                  <li>Notes : Menjalani perintah Allah dan menjauh larangannya sesuai dengan Al Qur'an dan hadist.</li>
+                  <li>Type : <%= plans.type %></li>
+                  <li>Purpose : <%= plans.purpose %></li>
+                  <li>Startdate : <%= util.formatDate(plans.startdate) %></li>
+                  <li>Enddate : <%= util.formatDate(plans.enddate) %></li>
+                  <li>Status : <%= plans.status %></li>
+                  <li>Notes : <%= plans.notes %></li>
                 </ul>
-                <p><b>Sub plan</b></p>
+                <!-- <p><b>Sub plan</b></p>
                 <ul style="font-size: 14px">
                   <% for(let i = 0; i < 5; i++){ %>
                     <li> <a href="#"><small>done</small></a> <b>Solat 5 waktu</b></li>
@@ -105,9 +106,9 @@
                       <li><strike>Startdate : Now</strike></li>
                       <li><strike>Enddate : Wallahu a'lam</strike></li>
                       <li><strike>Status : Process</strike></li>
-                    </ul>
+                    </ul> -->
 
-                  </ul>
+                  <!-- </ul> -->
 
                 </div>
               </div>
