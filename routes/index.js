@@ -172,6 +172,22 @@ module.exports = function(passport){
     });
   });
 
+  router.post('/checkMainPlan/:id', function(req, res, next) {
+    models.Plan.find({
+      where: {
+        id: req.params.id
+      },
+    }).then(function(plan) {
+      plan.updateAttributes({
+        status: "Success"
+      }).then(function(plan) {
+        createLog("Check main plan", function(){
+          res.redirect(`../../viewMainPlan/${req.params.id}`)
+        });
+      });
+    });
+  });
+
   router.get('/addSubPlan', function(req, res, next) {
     res.render('addSubPlan');
   });

@@ -2,10 +2,11 @@
 module.exports = (sequelize, DataTypes) => {
   const Log = sequelize.define('Log', {
     logdate: DataTypes.DATE,
-    lognote: DataTypes.STRING
+    lognote: DataTypes.STRING,
+    UserId: DataTypes.INTEGER
   }, {});
   Log.associate = function(models) {
-    // associations can be defined here
+    Log.belongsTo(models.User);
   };
   return Log;
 };

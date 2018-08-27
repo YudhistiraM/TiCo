@@ -20,6 +20,7 @@ module.exports = (sequelize, DataTypes) => {
   }, {});
   User.associate = function(models) {
     User.hasMany(models.Plan);
+    User.hasMany(models.Log);
   };
   // hooks
   User.beforeCreate((user, options) => {
