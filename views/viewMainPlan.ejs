@@ -58,7 +58,7 @@
                   <li> <% if(data.status=="Success"){ %> <span class="badge badge-primary"><strike>Type : <%= data.type %></strike></span> <% }else{ %> Type : <%= data.type %> <% } %> </li>
                   <li> <% if(data.status=="Success"){ %> <span class="badge badge-primary"><strike>Purpose : <%= data.purpose %></strike></span> <% }else{ %> Purpose : <%= data.purpose %> <% } %> </li>
                   <li> <% if(data.status=="Success"){ %> <span class="badge badge-primary"><strike>Startdate : <%= data.startdate %></strike></span> <% }else{ %> Startdate : <%= data.startdate %> <% } %> </li>
-                  <li> <% if(data.status=="Success"){ %> <span class="badge badge-primary"><strike>Enddate : <%= data.enddate %></strike></span> <% }else{ %> Enddate : <%= data.enddate %> <% } %> </li>
+                  <li> <% if(data.status=="Success"){ %> <span class="badge badge-primary"><strike>Type : <%= data.enddate %></strike></span> <% }else{ %> Enddate : <%= data.enddate %> <% } %> </li>
                   <li> <% if(data.status=="Success"){ %> <span class="badge badge-primary"><strike>Status : <%= data.status %></strike></span> <% }else{ %> Status : <%= data.status %> <% } %> </li>
                   <li> <% if(data.status=="Success"){ %> <span class="badge badge-primary"><strike>Notes : <%= data.notes %></strike></span> <% }else{ %> Notes : <%= data.notes %> <% } %> </li>
                 </ul>
@@ -68,9 +68,9 @@
                     <ul style="font-size: 14px">
                       <li> <b> <% if(sub1[i].status=="Success"){ %> <span class="badge badge-primary"><strike><%= sub1[i].title %></strike></span> <% }else{ %> <a href="../../checkSubPlan/<%= data.id %>/<%= sub1[i].id %>"><small>done</small></a> <%= sub1[i].title%>  <% } %>  </b> </li>
                       <ul style="font-size: 14px">
-                        <li> <% if(sub1[i].status=="Success"){ %> <span class="badge badge-primary"><strike>Startdate : <%= sub1[i].startdate %></strike></span> <% }else{ %> Startdate : <%= sub1[i].startdate %> <% } %> </li>
-                        <li> <% if(sub1[i].status=="Success"){ %> <span class="badge badge-primary"><strike>Enddate : <%= sub1[i].enddate %></strike></span> <% }else{ %> Enddate : <%= sub1[i].enddate %> <% } %> </li>
+                        <li> <% if(sub1[i].status=="Success"){ %> <span class="badge badge-primary"><strike>Type : <%= sub1[i].type %></strike></span> <% }else{ %> Type : <%= sub1[i].type %> <% } %> </li>
                         <li> <% if(sub1[i].status=="Success"){ %> <span class="badge badge-primary"><strike>Status : <%= sub1[i].status %></strike></span> <% }else{ %> Status : <%= sub1[i].status %> <% } %> </li>
+                        <li> <% if(sub1[i].status=="Success"){ %> <span class="badge badge-primary"><strike>Notes : <%= sub1[i].notes %></strike></span> <% }else{ %> Notes : <%= sub1[i].notes %> <% } %> </li>
                       </ul>
                     </ul>
                     <% } %>
@@ -96,14 +96,6 @@
                           <option value"Monthly Plan">Monthly Plan</option>
                           <option value"Weekly Plan">Weekly Plan</option>
                         </select>
-                      </div>
-                      <div class="form-group">
-                        <label for="startdate">Start Date</label>
-                        <input type="date" class="form-control" id="startdate" name="startdate" placeholder="Enter your plan" required>
-                      </div>
-                      <div class="form-group">
-                        <label for="enddate">End Date</label>
-                        <input type="date" class="form-control" id="enddate" name="enddate" placeholder="Enter your plan" required>
                       </div>
                       <div class="form-group">
                         <label for="pnotes">Notes</label>

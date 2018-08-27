@@ -113,8 +113,6 @@ module.exports = function(passport){
     models.Plan.create({
       title: req.query.title,
       type: req.query.type,
-      startdate: req.query.startdate,
-      enddate: req.query.enddate,
       notes: req.query.notes,
       status: "on process",
       userid: 1,
