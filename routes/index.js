@@ -3,7 +3,6 @@ const router = express.Router();
 const models = require('../models/index');
 const util = require('../helpers/util');
 
-
 module.exports = function(passport){
   /* GET home page. */
   router.get('/', function(req, res, next){
@@ -172,94 +171,99 @@ module.exports = function(passport){
     });
   });
 
-  router.post('/checkMainPlan/:id', function(req, res, next) {
-    models.Plan.find({
-      where: {
-        id: req.params.id
-      },
-    }).then(function(plan) {
-      plan.updateAttributes({
-        status: "Success"
-      }).then(function(plan) {
+  router.get('/checkMainPlan/:id', function(req, res, next) {
+    models.Plan.find({where: {id: req.params.id},}).then(function(plan) {plan.updateAttributes({status: "Success"}).then(function(plan) {
+      models.Plan.find({where: {id: req.params.id},}).then(function(sub) {sub.updateAttributes({status: "Success"}).then(function(sub) {
         createLog("Check main plan", function(){
           res.redirect(`../../viewMainPlan/${req.params.id}`)
         });
       });
     });
   });
+});
+});
 
-  router.get('/addSubPlan', function(req, res, next) {
-    res.render('addSubPlan');
-  });
-
-  router.get('/viewMainPlan/:id', function(req, res, next) {
-    let id = req.params.id;
-    models.Plan.findAll({where: {id: id}, raw: true}).then(function(data){
-      models.Plan.findAll({where: {parentplan: id}, raw: true}).then(function(sub1){
-        console.log(data);
-        console.log(sub1);
-        res.render('viewMainPlan', {
-          data: data,
-          sub1: sub1
-        });
+router.get('/checkSubPlan/:mainid/:subid', function(req, res, next) {
+  models.Plan.find({where: {id: req.params.subid, parentplan : req.params.mainid}, }).then(function(plan) {plan.updateAttributes({status: "Success"}).then(function(plan) {
+      createLog("Check main plan", function(){
+        res.redirect(`../../viewMainPlan/${req.params.mainid}`)
       });
     });
   });
+});
 
-  router.post('/viewMainPlan/:id', function(req, res, next) {
-    models.Plan.find({
-      where: {
-        id: req.params.id
-      },
+router.get('/addSubPlan', function(req, res, next) {
+  res.render('addSubPlan');
+});
+
+router.get('/viewMainPlan/:id', function(req, res, next) {
+  let id = req.params.id;
+  models.Plan.findAll({where: {id: id}, raw: true}).then(function(data){
+    models.Plan.findAll({where: {parentplan: id}, raw: true}).then(function(sub1){
+      console.log(data);
+      console.log(sub1);
+      res.render('viewMainPlan', {
+        data: data[0],
+        sub1: sub1
+      });
+    });
+  });
+});
+
+router.post('/viewMainPlan/:id', function(req, res, next) {
+  models.Plan.find({
+    where: {
+      id: req.params.id
+    },
+  }).then(function(plan) {
+    plan.findAll({
+      title: title,
+      type: type,
+      purpose: purpose,
+      startdate: startdate,
+      enddate: enddate,
+      notes: notes,
+      status: status
     }).then(function(plan) {
-      plan.findAll({
-        title: title,
-        type: type,
-        purpose: purpose,
-        startdate: startdate,
-        enddate: enddate,
-        notes: notes,
-        status: status
-      }).then(function(plan) {
-        res.redirect('../../viewMainPlan')
-      });
+      res.redirect('../../viewMainPlan')
     });
   });
+});
 
-  router.get('/account', function(req, res, next) {
-    res.render('account');
-  });
+router.get('/account', function(req, res, next) {
+  res.render('account');
+});
 
-  router.get('/report', function(req, res, next) {
-    res.render('report');
-  });
+router.get('/report', function(req, res, next) {
+  res.render('report');
+});
 
-  router.get('/dailyActivity', function(req, res, next) {
-    res.render('dailyActivity');
-  });
+router.get('/dailyActivity', function(req, res, next) {
+  res.render('dailyActivity');
+});
 
-  router.get('/logActivity', function(req, res, next) {
-    models.Log.findAll({
-      order: [
-        ['id', 'DESC'],
-      ],
-      raw: true
-    }).then(function(logs){
-      res.render('logActivity', {
-        logs: logs
-      });
+router.get('/logActivity', function(req, res, next) {
+  models.Log.findAll({
+    order: [
+      ['id', 'DESC'],
+    ],
+    raw: true
+  }).then(function(logs){
+    res.render('logActivity', {
+      logs: logs
     });
   });
+});
 
 
-  function createLog(note, cb){
-    models.Log.create({
-      logdate: Date.now(),
-      lognote: note,
-    }).then(function(x){
-      cb();
-    });
-  }
+function createLog(note, cb){
+  models.Log.create({
+    logdate: Date.now(),
+    lognote: note,
+  }).then(function(x){
+    cb();
+  });
+}
 
-  return router;
+return router;
 }
