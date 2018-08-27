@@ -1,21 +1,21 @@
 {
   "development": {
-    "username": "saeful",
-    "password": "green",
+    "username": "bambang",
+    "password": "bambang49",
     "database": "tico",
     "host": "127.0.0.1",
     "dialect": "postgres"
   },
   "test": {
-    "username": "saeful",
-    "password": "green",
+    "username": "bambang",
+    "password": "bambang49",
     "database": "tico",
     "host": "127.0.0.1",
     "dialect": "postgres"
   },
   "production": {
-    "username": "saeful",
-    "password": "green",
+    "username": "bambang",
+    "password": "bambang49",
     "database": "tico",
     "host": "127.0.0.1",
     "dialect": "postgres"

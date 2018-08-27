@@ -7,7 +7,6 @@
   <link rel='stylesheet' href='/stylesheets/sidebar.css' />
 </head>
 <body>
-
   <nav class="navbar navbar-expand-lg fixed-top navbar-dark" style="background-color: #000080">
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo01" aria-controls="navbarTogglerDemo01" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
@@ -55,114 +54,91 @@
             <hr>
             <div class="card card-dark">
               <div class="card-body">
-                <p><b> <a href="check?/<%= plans.id %>"><small>done</small></a> <%= plans.title %></b></p>
+                <p><b> <a href="#"><small>done</small></a> <%= data[0].title%></b></p>
                 <ul style="font-size: 14px">
-                  <li>Type : <%= plans.type %></li>
-                  <li>Purpose : <%= plans.purpose %></li>
-                  <li>Startdate : <%= util.formatDate(plans.startdate) %></li>
-                  <li>Enddate : <%= util.formatDate(plans.enddate) %></li>
-                  <li>Status : <%= plans.status %></li>
-                  <li>Notes : <%= plans.notes %></li>
-                </ul>
-                <!-- <p><b>Sub plan</b></p>
-                <ul style="font-size: 14px">
-                  <% for(let i = 0; i < 5; i++){ %>
-                    <li> <a href="#"><small>done</small></a> <b>Solat 5 waktu</b></li>
-                    <ul style="font-size: 14px">
-                      <li>Startdate : Now</li>
-                      <li>Enddate : Wallahu a'lam</li>
-                      <li>Status : Process</li>
-                      <li><a href="#">add sub</a> </li>
-                    </ul>
+                  <% for (let i = 0; i < data.length; i++) { %>
+                    <li>Type : <%= data[i].type%></li>
+                    <li>Purpose : <%= data[i].purpose%></li>
+                    <li>Startdate : <%= data[i].startdate%></li>
+                    <li>Enddate : <%= data[i].enddate%></li>
+                    <li>Status : <%= data[i].status%></li>
+                    <li>Notes : <%= data[i].notes%></li>
                     <% } %>
-                    <li><b> <a href="#"><small>done</small></a> Solat 5 waktu</b></li>
-                    <ul style="font-size: 14px">
-                      <li>Startdate : Now</li>
-                      <li>Enddate : Wallahu a'lam</li>
-                      <li>Status : Process</li>
-                      <li>
-                        <ul style="font-size: 12px">
-                          <li><b> <a href="#"><small>done</small></a> Solat 5 waktu</b></li>
-                          <li>Startdate : Now</li>
-                          <li>Enddate : Wallahu a'lam</li>
-                          <li>Status : Process</li>
+                  </ul>
+                  <% if(sub1.length > 0){ %>
+                    <p><b>Sub plan</b></p>
+                    <% for(let i = 0; i < sub1.length; i++){ %>
+                      <ul style="font-size: 14px">
+                        <li><b> <a href="#"><small>done</small></a> <%= sub1[i].title %></b></li>
+                        <ul style="font-size: 14px">
+                          <li>Startdate : <%= sub1[i].startdate %></li>
+                          <li>Enddate : <%= sub1[i].enddate %></li>
+                          <li>Status : <%= sub1[i].status %></li>
                         </ul>
-                        <ul style="font-size: 12px">
-                          <li><b> <a href="#"><small>done</small></a> Solat 5 waktu</b></li>
-                          <li>Startdate : Now</li>
-                          <li>Enddate : Wallahu a'lam</li>
-                          <li>Status : Process</li>
-                        </ul>
-                        <ul style="font-size: 12px">
-                          <li><b> <a href="#"><small>done</small></a> Solat 5 waktu</b></li>
-                          <li>Startdate : Now</li>
-                          <li>Enddate : Wallahu a'lam</li>
-                          <li>Status : Process</li>
-                        </ul>
-                      </li>
-                    </ul>
-                    <li><b><strike>Naik haji</strike></b></li>
-                    <ul style="font-size: 14px">
-                      <li><strike>Startdate : Now</strike></li>
-                      <li><strike>Enddate : Wallahu a'lam</strike></li>
-                      <li><strike>Status : Process</strike></li>
-                    </ul> -->
-
-                  <!-- </ul> -->
-
+                      </ul>
+                      <% } %>
+                      <% } %>
+                    </div>
+                  </div>
                 </div>
-              </div>
-            </div>
-            <div class="col-sm-5">
-              <h5 class="text-center">Add sub plan</h5>
-              <hr>
-              <div class="card card-dark">
-                <div class="card-body">
-                  <form>
+                <div class="col-sm-5">
+                  <h5 class="text-center">Add sub plan</h5>
+                  <hr>
+                  <div class="card card-dark">
+                    <div class="card-body">
+                      <form action="/addSubPlan/<%= data[0].id %>" method="get">
 
-                    <div class="form-group">
-                      <label for="subplan">Sub Plan</label>
-                      <input type="text" class="form-control" id="subplan" placeholder="Enter your plan" required>
-                    </div>
-                    <div class="form-group">
-                      <label for="startdate">Start Date</label>
-                      <input type="date" class="form-control" id="startdate" placeholder="Enter your plan" required>
-                    </div>
-                    <div class="form-group">
-                      <label for="enddate">End Date</label>
-                      <input type="date" class="form-control" id="enddate" placeholder="Enter your plan" required>
-                    </div>
-                    <div class="form-group">
-                      <label for="pnotes">Notes</label>
-                      <textarea class="form-control" id="pnotes" rows="8" placeholder="Enter your notes" required></textarea>
-                    </div>
+                        <div class="form-group">
+                          <label for="subplan">Sub Plan</label>
+                          <input type="text" class="form-control" id="subplan" name="title" placeholder="Enter your plan" required>
+                        </div>
+                        <div class="form-group">
+                          <label for="type">Plan Type</label>
+                          <select name="type" class="form-control" id="type" required>
+                            <option>Choose plan type...</option>
+                            <option value"Monthly Plan">Monthly Plan</option>
+                            <option value"Weekly Plan">Weekly Plan</option>
+                          </select>
+                        </div>
+                        <div class="form-group">
+                          <label for="startdate">Start Date</label>
+                          <input type="date" class="form-control" id="startdate" name="startdate" placeholder="Enter your plan" required>
+                        </div>
+                        <div class="form-group">
+                          <label for="enddate">End Date</label>
+                          <input type="date" class="form-control" id="enddate" name="enddate" placeholder="Enter your plan" required>
+                        </div>
+                        <div class="form-group">
+                          <label for="pnotes">Notes</label>
+                          <textarea class="form-control" id="pnotes" rows="8" name="notes" placeholder="Enter your notes" required></textarea>
+                        </div>
 
-                    <button type="submit" class="btn btn-primary">Save</button>
-                    <a href="#" class="btn btn-warning">Back</a>
-                  </form>
+                        <button type="submit" class="btn btn-primary">Save</button>
+                        <a href="#" class="btn btn-warning">Back</a>
+                      </form>
+                    </div>
+                  </div>
                 </div>
               </div>
             </div>
           </div>
-        </div>
-      </div>
-    </div><br>
+        </div><br>
 
-    <br>
+        <br>
 
 
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
-    <script>
-    $(document).ready(function(){
-      $('.dropdown-submenu a.plan').on("click", function(e){
-        $(this).next('ul').toggle();
-        e.stopPropagation();
-        e.preventDefault();
-      });
-    });
-    </script>
-  </body>
-  </html>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+        <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
+        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
+        <script>
+        $(document).ready(function(){
+          $('.dropdown-submenu a.plan').on("click", function(e){
+            $(this).next('ul').toggle();
+            e.stopPropagation();
+            e.preventDefault();
+          });
+        });
+        </script>
+      </body>
+      </html>
