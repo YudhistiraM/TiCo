@@ -1,39 +1,54 @@
 'use strict';
 module.exports = {
   up: (queryInterface, Sequelize) => {
-    return queryInterface.createTable('Plans', {
+    return queryInterface.createTable('Users', {
       id: {
         allowNull: false,
         autoIncrement: true,
         primaryKey: true,
         type: Sequelize.INTEGER
       },
-      title: {
+      email: {
         type: Sequelize.STRING
       },
-      type: {
+      pass: {
         type: Sequelize.STRING
       },
-      purpose: {
+      fbid: {
         type: Sequelize.STRING
       },
-      startdate: {
-        type: Sequelize.DATE
-      },
-      enddate: {
-        type: Sequelize.DATE
-      },
-      notes: {
+      fbtoken: {
         type: Sequelize.STRING
       },
-      status: {
+      fbemail: {
         type: Sequelize.STRING
       },
-      parentplan: {
-        type: Sequelize.INTEGER
+      fbname: {
+        type: Sequelize.STRING
       },
-      UserId: {
-        type: Sequelize.INTEGER
+      twid: {
+        type: Sequelize.STRING
+      },
+      twtoken: {
+        type: Sequelize.STRING
+      },
+      twemail: {
+        type: Sequelize.STRING
+      },
+      twname: {
+        type: Sequelize.STRING
+      },
+      googleid: {
+        type: Sequelize.STRING
+      },
+      googletoken: {
+        type: Sequelize.STRING
+      },
+      googleemail: {
+        type: Sequelize.STRING
+      },
+      googlename: {
+        type: Sequelize.STRING
       },
       createdAt: {
         allowNull: false,
@@ -46,6 +61,6 @@ module.exports = {
     });
   },
   down: (queryInterface, Sequelize) => {
-    return queryInterface.dropTable('Plans');
+    return queryInterface.dropTable('Users');
   }
 };

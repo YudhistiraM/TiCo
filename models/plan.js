@@ -9,10 +9,10 @@ module.exports = (sequelize, DataTypes) => {
     notes: DataTypes.STRING,
     status: DataTypes.STRING,
     parentplan: DataTypes.INTEGER,
-    userid: DataTypes.INTEGER
+    UserId: DataTypes.INTEGER
   }, {});
   Plan.associate = function(models) {
-    // associations can be defined here
+    Plan.belongsTo(models.User);
   };
   return Plan;
 };
